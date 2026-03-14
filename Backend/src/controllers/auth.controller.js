@@ -1,6 +1,7 @@
 const userModel = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const blacklistModel = require("../models/blacklist.model");
 
 async function registeruser(req, res) {
   const { username, email, password } = req.body;
@@ -40,7 +41,7 @@ async function loginuser(req, res) {
 
   const user = await userModel.findOne({
     $or: [{ email }, { username }],
-  });
+  }).select("+password")
 
   if (!user) {
     return res.status(400).json({
@@ -59,7 +60,7 @@ async function loginuser(req, res) {
   const token = jwt.sign(
     {
       id: user._id,
-      userename: user.username,
+      username: user.username,
     },
     process.env.JWT_SECRET,
     {
@@ -67,17 +68,40 @@ async function loginuser(req, res) {
     },
   );
 
-   res.cookie("token", token)
+  res.cookie("token", token);
 
-   return res.status(201).json({
-    message:"user logged in successfully",
-    user:{
-        id: user._id,
-        username : user.username,
-        email:user.email
-    }
-   })
-
+  return res.status(201).json({
+    message: "user logged in successfully",
+    user: {
+      id: user._id,
+      username: user.username,
+      email: user.email,
+    },
+  });
 }
 
-module.exports = { registeruser, loginuser };
+async function getme(req, res) {
+  const user = await userModel.findById(req.user.id);
+
+  res.status(200).json({
+    message : "user fetched successfully",
+    user
+  })
+}
+
+async function logoutuser(req, res) {
+    const token = req.cookies.token
+
+    res.clearCookie("token")
+    
+    await blacklistModel.create({
+     token
+    })
+
+    res.status(200).json({
+        message:"logout sucessfully"
+    })
+}
+
+module.exports = { registeruser, loginuser, getme , logoutuser }
+
