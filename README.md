@@ -149,6 +149,6 @@ This project is licensed under the **MIT License**.
 
 ## 👨‍💻 Author
 
-**Your Name**
+**Abhishek Jha**
 
 If you like this project, don't forget to ⭐ the repository!
