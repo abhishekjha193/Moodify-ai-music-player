@@ -1,4 +1,4 @@
-# 🎧 Moodify – Real-Time Emotion Aware Music Player
+# 🎧 Moodify – Real Time Emotion Aware Music Player
 
 Moodify is a **real-time emotion-aware music player** that uses your **webcam to detect facial expressions** and automatically plays music based on your mood.
 It leverages **MediaPipe facial landmark detection** and **React** to analyze emotions directly in the browser and create a personalized listening experience.
