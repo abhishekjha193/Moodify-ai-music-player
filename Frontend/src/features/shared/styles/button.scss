@@ -1,0 +1,29 @@
+$primary-color: #dd4200;
+$accent-color: #ff6f3c;
+$border-radius: 0.5rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+
+@mixin button-style($bg: $primary-color, $color: #fff, $padding: $spacing-md) {
+    background-color: $bg;
+    color: $color;
+    padding: $spacing-sm $padding;
+    border: none;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover { background-color: lighten($bg, 10%); }
+    &:active { transform: scale(0.98); }
+    &:focus { outline: 2px solid lighten($bg, 20%); outline-offset: 2px; }
+}
+
+.button {
+    @include button-style();
+}
+
+.button-accent {
+    @include button-style($bg: $accent-color);
+}

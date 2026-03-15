@@ -2,6 +2,7 @@ const userModel = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const blacklistModel = require("../models/blacklist.model");
+const redis = require("../config/cache");
 
 async function registeruser(req, res) {
   const { username, email, password } = req.body;
@@ -37,15 +38,16 @@ async function registeruser(req, res) {
 }
 
 async function loginuser(req, res) {
-  const { email, password, username } = req.body;
 
-  const user = await userModel.findOne({
-    $or: [{ email }, { username }],
-  }).select("+password")
+  const { email, password } = req.body;
+
+  const user = await userModel
+    .findOne({ email })
+    .select("+password");
 
   if (!user) {
     return res.status(400).json({
-      message: "Invalid Credentails",
+      message: "Invalid Credentials",
     });
   }
 
@@ -53,7 +55,7 @@ async function loginuser(req, res) {
 
   if (!isPasswordvalid) {
     return res.status(400).json({
-      message: "invalid credentials",
+      message: "Invalid Credentials",
     });
   }
 
@@ -63,15 +65,13 @@ async function loginuser(req, res) {
       username: user.username,
     },
     process.env.JWT_SECRET,
-    {
-      expiresIn: "30d",
-    },
+    { expiresIn: "30d" }
   );
 
   res.cookie("token", token);
 
-  return res.status(201).json({
-    message: "user logged in successfully",
+  return res.status(200).json({
+    message: "User logged in successfully",
     user: {
       id: user._id,
       username: user.username,
@@ -84,24 +84,21 @@ async function getme(req, res) {
   const user = await userModel.findById(req.user.id);
 
   res.status(200).json({
-    message : "user fetched successfully",
-    user
-  })
+    message: "user fetched successfully",
+    user,
+  });
 }
 
 async function logoutuser(req, res) {
-    const token = req.cookies.token
+  const token = req.cookies.token;
 
-    res.clearCookie("token")
-    
-    await blacklistModel.create({
-     token
-    })
+  res.clearCookie("token");
 
-    res.status(200).json({
-        message:"logout sucessfully"
-    })
+  redis.set(token, Date.now().toString(),"EX",60*60);
+
+  res.status(200).json({
+    message: "logout sucessfully",
+  });
 }
 
-module.exports = { registeruser, loginuser, getme , logoutuser }
-
+module.exports = { registeruser, loginuser, getme, logoutuser };
