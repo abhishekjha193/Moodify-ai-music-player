@@ -1,28 +1,38 @@
 import React, { useState } from "react";
 import "../style/login.scss";
 import FormGroup from "../components/formgroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useauth } from "../hooks/useauth";
 
 const Register = () => {
-  const [name, setName] = useState("");
+  const navigate = useNavigate();
+  const { handleRegister, loading } = useauth();
+
+  const [username, setUsername] = useState(""); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    const userData = {
-      name,
-      email,
-      password,
-    };
+    try {
+      await handleRegister({
+        username,
+        email,
+        password,
+      });
 
-    console.log("Register Data:", userData);
-  };
+      navigate("/login");
+
+    } catch (err) {
+      console.log(err.response?.data || err.message);
+    }
+  }
 
   return (
     <div className="login-container">
       <div className="login-card">
+
         <div className="logo">
           <img src="/moodify - logo.png" alt="Moodify Logo" />
         </div>
@@ -30,12 +40,12 @@ const Register = () => {
         <h2>Create Account</h2>
 
         <form onSubmit={handleSubmit}>
+
           <FormGroup
             type="text"
             placeholder="Full Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            autoComplete="name"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
 
           <FormGroup
@@ -43,7 +53,6 @@ const Register = () => {
             placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            autoComplete="email"
           />
 
           <FormGroup
@@ -51,24 +60,17 @@ const Register = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            autoComplete="new-password"
           />
 
           <button type="submit" className="button">
-            Register
+            {loading ? "Registering..." : "Register"}
           </button>
 
           <div className="forgot-password">
             <Link to="/login">
-              <span>Already have an account? </span>
-              Login here
+              Already have an account? Login here
             </Link>
           </div>
-
-          <div>
-            
-          </div>
-
 
         </form>
       </div>
