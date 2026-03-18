@@ -56,9 +56,6 @@ It leverages **MediaPipe facial landmark detection** and **React** to analyze em
 ## 📸 Screenshots
 <img width="1146" height="516" alt="image" src="https://github.com/user-attachments/assets/c38a43e1-2c94-4434-b2a1-2a179ee91bcf" />
 <img width="1506" height="830" alt="image" src="https://github.com/user-attachments/assets/0bc093ba-a8fd-4f54-b3e2-9181d9b3d68f" />
-<img width="1516" height="860" alt="image" src="https://github.com/user-attachments/assets/9aa2cb63-e5f0-40c4-8c63-d362703ad9dc" />
-
-
 
 ```
 /screenshots/mood-detection.png
@@ -106,17 +103,69 @@ http://localhost:3000
 ```
 moodify/
 │
-├── public/
+├── Backend/
+│   │
+│   ├── src/
+│   │   ├── config/                 # DB + Redis config
+│   │   │   ├── db.js
+│   │   │   └── redis.js
+│   │   │
+│   │   ├── controllers/            # Request handling logic
+│   │   │   ├── auth.controller.js
+│   │   │   └── song.controller.js
+│   │   │
+│   │   ├── middleware/             # Middlewares
+│   │   │   ├── auth.middleware.js
+│   │   │   └── upload.middleware.js
+│   │   │
+│   │   ├── models/                 # MongoDB schemas
+│   │   │   ├── user.model.js
+│   │   │   └── song.model.js
+│   │   │
+│   │   ├── routes/                 # API routes
+│   │   │   ├── auth.routes.js
+│   │   │   └── song.routes.js
+│   │   │
+│   │   ├── services/               # External services (ImageKit)
+│   │   │   └── imagekit.service.js
+│   │   │
+│   │   ├── utils/                  # Helper functions
+│   │   │   └── token.js
+│   │
+│   ├── app.js                      # Express app config
+│   ├── server.js                   # Server start
+│   ├── package.json
+│   └── .env
 │
-├── src/
-│   ├── components/
-│   ├── emotionDetection/
-│   ├── musicPlayer/
-│   ├── App.js
-│   └── index.js
+├── Frontend/
+│   │
+│   ├── src/
+│   │   ├── components/             # UI components
+│   │   │   ├── Player.jsx
+│   │   │   ├── Navbar.jsx
+│   │   │   └── SongCard.jsx
+│   │   │
+│   │   ├── pages/                  # Screens
+│   │   │   ├── Home.jsx
+│   │   │   └── Login.jsx
+│   │   │
+│   │   ├── context/                # Global state
+│   │   │   └── AuthContext.jsx
+│   │   │
+│   │   ├── services/               # API calls
+│   │   │   └── api.js
+│   │   │
+│   │   ├── utils/
+│   │   │   └── helpers.js
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │
+│   ├── package.json
 │
-├── package.json
-└── README.md
+├── README.md
+└── .gitignore
+
 ```
 
 ---
