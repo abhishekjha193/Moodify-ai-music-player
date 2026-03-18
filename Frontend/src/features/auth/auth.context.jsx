@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { getme } from "./services/auth.api"; 
+import { getme } from "./services/auth.api";
 
 export const AuthContext = createContext();
 
@@ -22,8 +22,22 @@ export const AuthProvider = ({ children }) => {
     fetchUser();
   }, []);
 
+  // 🔥 LOGOUT FUNCTION
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("token"); 
+  };
+
   return (
-    <AuthContext.Provider value={{ user, setUser, loading, setLoading }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        setUser,
+        loading,
+        setLoading,
+        logout, 
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

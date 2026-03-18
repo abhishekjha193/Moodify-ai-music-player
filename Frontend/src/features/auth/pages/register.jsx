@@ -4,11 +4,15 @@ import FormGroup from "../components/formgroup";
 import { Link, useNavigate } from "react-router-dom";
 import { useauth } from "../hooks/useauth";
 
+const isValidEmail = (email) => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+};
+
 const Register = () => {
   const navigate = useNavigate();
   const { handleRegister, loading } = useauth();
-
-  const [username, setUsername] = useState(""); 
+  const [emailError, setEmailError] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,16 +27,26 @@ const Register = () => {
       });
 
       navigate("/login");
-
+      window.location.reload();
     } catch (err) {
-      console.log(err.response?.data || err.message);
+      alert(err.response?.data?.message || "Error");
     }
   }
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    if (!isValidEmail(value)) {
+      setEmailError("Invalid email");
+    } else {
+      setEmailError("");
+    }
+  };
 
   return (
     <div className="login-container">
       <div className="login-card">
-
         <div className="logo">
           <img src="/moodify - logo.png" alt="Moodify Logo" />
         </div>
@@ -40,7 +54,6 @@ const Register = () => {
         <h2>Create Account</h2>
 
         <form onSubmit={handleSubmit}>
-
           <FormGroup
             type="text"
             placeholder="Full Name"
@@ -54,6 +67,7 @@ const Register = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {emailError && <p style={{ color: "red" }}>{emailError}</p>}
 
           <FormGroup
             type="password"
@@ -67,11 +81,8 @@ const Register = () => {
           </button>
 
           <div className="forgot-password">
-            <Link to="/login">
-              Already have an account? Login here
-            </Link>
+            <Link to="/login">Already have an account? Login here</Link>
           </div>
-
         </form>
       </div>
     </div>

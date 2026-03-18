@@ -1,29 +1,25 @@
-$primary-color: #dd4200;
-$accent-color: #ff6f3c;
-$border-radius: 0.5rem;
-$spacing-sm: 0.5rem;
-$spacing-md: 1rem;
-
-@mixin button-style($bg: $primary-color, $color: #fff, $padding: $spacing-md) {
-    background-color: $bg;
-    color: $color;
-    padding: $spacing-sm $padding;
+.btn {
+    background: linear-gradient(135deg, var(--accent), #ff4d00);
+    color: #fff;
     border: none;
-    border-radius: $border-radius;
-    font-size: 1rem;
-    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
-    &:hover { background-color: lighten($bg, 10%); }
-    &:active { transform: scale(0.98); }
-    &:focus { outline: 2px solid lighten($bg, 20%); outline-offset: 2px; }
-}
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px var(--accent-glow);
+    }
 
-.button {
-    @include button-style();
-}
-
-.button-accent {
-    @include button-style($bg: $accent-color);
+    &--outline {
+        background: transparent;
+        border: 1px solid var(--glass-border);
+        color: var(--text-dim);
+        &:hover { border-color: var(--text-main); color: #fff; background: var(--glass); }
+    }
 }

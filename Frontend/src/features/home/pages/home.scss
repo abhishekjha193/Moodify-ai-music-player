@@ -1,0 +1,140 @@
+.home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    background-color: #0a0a0a;
+    color: #fff;
+}
+
+.home__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 40px;
+
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.home__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        filter: drop-shadow(0 0 8px rgba(255,120,0,0.4));
+    }
+
+    span {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+}
+
+.home__user {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.home__username {
+    font-size: 1rem;
+    color: #bbb;
+}
+
+
+.home__logout {
+    background: linear-gradient(135deg, #ff7a18, #ffb347);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255,120,0,0.4);
+    }
+}
+
+
+.home__layout {
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 30px;
+
+    padding: 30px 40px;
+}
+
+
+.home__left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(20px);
+
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.06);
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.home__right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(20px);
+
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.06);
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+
+.home__empty {
+    color: #777;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+
+.home__loading {
+    color: #aaa;
+    font-size: 0.85rem;
+    letter-spacing: 0.4px;
+}
+
+.home__footer {
+    width: 100%;
+    text-align: center;
+
+    padding: 14px 0;
+
+    font-size: 1 rem;
+    color: #777;
+
+    border-top: 1px solid rgba(255,255,255,0.05);
+
+    span {
+        color: #ff7a18;
+        font-weight: 600;
+    }
+}
