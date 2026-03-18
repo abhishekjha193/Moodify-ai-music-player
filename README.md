@@ -53,11 +53,12 @@ It leverages **MediaPipe facial landmark detection** and **React** to analyze em
 
 ---
 
-## 📸 Demo
+## 📸 Screenshots
+<img width="1146" height="516" alt="image" src="https://github.com/user-attachments/assets/c38a43e1-2c94-4434-b2a1-2a179ee91bcf" />
+<img width="1506" height="830" alt="image" src="https://github.com/user-attachments/assets/0bc093ba-a8fd-4f54-b3e2-9181d9b3d68f" />
+<img width="1516" height="860" alt="image" src="https://github.com/user-attachments/assets/9aa2cb63-e5f0-40c4-8c63-d362703ad9dc" />
 
-Add screenshots or GIFs here for better visualization.
 
-Example:
 
 ```
 /screenshots/mood-detection.png
