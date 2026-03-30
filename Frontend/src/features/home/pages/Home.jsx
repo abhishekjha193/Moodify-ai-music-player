@@ -56,7 +56,7 @@ const Home = () => {
 
       <div className="home__footer">
         <p>
-          Made with ❤️ by <span>Abhishek Jha</span>
+          Made by <span>Abhishek Jha</span>
         </p>
       </div>
     </div>
