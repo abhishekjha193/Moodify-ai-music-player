@@ -64,7 +64,7 @@ async function getSong(req, res) {
 
     const songs = await songModel.aggregate([
       { $match: { mood } },
-      { $sample: { size: 1 } }, // 🔥 random pick
+      { $sample: { size: 1 } }, 
     ]);
 
     if (!songs.length) {
