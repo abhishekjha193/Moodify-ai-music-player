@@ -5,9 +5,7 @@ const blacklistModel = require("../models/blacklist.model");
 const redis = require("../config/cache");
 
 async function registeruser(req, res) {
-
   const { username, email, password } = req.body;
-
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -40,13 +38,15 @@ async function registeruser(req, res) {
     password: hash,
   });
 
-  const token = jwt.sign(
-    { id: user._id, username },
-    process.env.JWT_SECRET,
-    { expiresIn: "30h" }
-  );
+  const token = jwt.sign({ id: user._id, username }, process.env.JWT_SECRET, {
+    expiresIn: "30h",
+  });
 
-  res.cookie("token", token);
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
 
   return res.status(201).json({
     message: "user registered successfully",
@@ -61,9 +61,7 @@ async function registeruser(req, res) {
 async function loginuser(req, res) {
   const { email, password } = req.body;
 
-  const user = await userModel
-    .findOne({ email })
-    .select("+password");
+  const user = await userModel.findOne({ email }).select("+password");
 
   if (!user) {
     return res.status(400).json({
@@ -85,10 +83,14 @@ async function loginuser(req, res) {
       username: user.username,
     },
     process.env.JWT_SECRET,
-    { expiresIn: "30d" }
+    { expiresIn: "30d" },
   );
 
-  res.cookie("token", token);
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
 
   return res.status(200).json({
     message: "User logged in successfully",
