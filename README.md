@@ -186,9 +186,6 @@ Contributions are welcome!
 
 ---
 
-## Deployed At
-https://moodify-ai-music-player.vercel.app/
-
 ## 📜 License
 
 This project is licensed under the **MIT License**.
