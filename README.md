@@ -191,6 +191,8 @@ Contributions are welcome!
 This project is licensed under the **MIT License**.
 
 ---
+Live Link - https://moodify-ai-music-player.vercel.app/
+---
 
 ## 👨‍💻 Author
 
