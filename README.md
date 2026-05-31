@@ -53,9 +53,9 @@ It leverages **MediaPipe facial landmark detection** and **React** to analyze em
 
 ---
 
-## 📸 Screenshots
-<img width="1146" height="516" alt="image" src="https://github.com/user-attachments/assets/c38a43e1-2c94-4434-b2a1-2a179ee91bcf" />
-<img width="1506" height="830" alt="image" src="https://github.com/user-attachments/assets/0bc093ba-a8fd-4f54-b3e2-9181d9b3d68f" />
+## 📸 Application
+
+<img width="1672" height="941" alt="music_player" src="https://github.com/user-attachments/assets/44b0c019-2808-4a59-807b-b380ef104b69" />
 
 ---
 
@@ -191,7 +191,7 @@ Contributions are welcome!
 This project is licensed under the **MIT License**.
 
 ---
-Live Link - https://MindTunes-ai-music-player.vercel.app/
+Live Link - https://mindtunes.vercel.app/
 ---
 
 ## 👨‍💻 Author
