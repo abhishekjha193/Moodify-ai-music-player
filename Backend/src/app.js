@@ -7,7 +7,7 @@ const songRoutes = require("./routes/songs.routes")
 const app = express();
 
 app.use(cors({
-  origin: "https://mindtunes.vercel.app/",
+  origin: "https://mindtunes.vercel.app",
   credentials: true
 }));
 
