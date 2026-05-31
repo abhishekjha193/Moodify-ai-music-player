@@ -24,7 +24,7 @@ async function uploadSong(req, res) {
     const songFile = await storageService.uploadFile({
       buffer: songBuffer,
       filename: title + ".mp3",
-      folder: "/cohort-2/moodify/songs",
+      folder: "/cohort-2/MindTunes/songs",
     });
 
     let posterFile = null;
@@ -33,7 +33,7 @@ async function uploadSong(req, res) {
       posterFile = await storageService.uploadFile({
         buffer: posterBuffer,
         filename: title + ".jpeg",
-        folder: "/cohort-2/moodify/posters",
+        folder: "/cohort-2/MindTunes/posters",
       });
     }
 

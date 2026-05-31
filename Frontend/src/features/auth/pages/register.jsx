@@ -48,7 +48,7 @@ const Register = () => {
     <div className="login-container">
       <div className="login-card">
         <div className="logo">
-          <img src="/moodify - logo.png" alt="Moodify Logo" />
+          <img src="/MindTunes - logo.png" alt="MindTunes Logo" />
         </div>
 
         <h2>Create Account</h2>

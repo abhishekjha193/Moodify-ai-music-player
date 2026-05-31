@@ -1,6 +1,6 @@
-# 🎧 Moodify – Real Time Emotion Aware Music Player
+# 🎧 MindTunes – Real Time Emotion Aware Music Player
 
-Moodify is a **real-time emotion-aware music player** that uses your **webcam to detect facial expressions** and automatically plays music based on your mood.
+MindTunes is a **real-time emotion-aware music player** that uses your **webcam to detect facial expressions** and automatically plays music based on your mood.
 It leverages **MediaPipe facial landmark detection** and **React** to analyze emotions directly in the browser and create a personalized listening experience.
 
 ---
@@ -38,7 +38,7 @@ It leverages **MediaPipe facial landmark detection** and **React** to analyze em
 2. **MediaPipe Face Landmarker** detects **468 facial landmarks** in real time.
 3. Facial expressions are analyzed using **blendshape scores**.
 4. A **classification algorithm** determines the user's emotion.
-5. Based on the detected mood, **Moodify automatically plays matching music**.
+5. Based on the detected mood, **MindTunes automatically plays matching music**.
 
 ---
 
@@ -64,13 +64,13 @@ It leverages **MediaPipe facial landmark detection** and **React** to analyze em
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/moodify-emotion-music-player.git
+git clone https://github.com/yourusername/MindTunes-emotion-music-player.git
 ```
 
 Navigate to the project folder:
 
 ```bash
-cd moodify-emotion-music-player
+cd MindTunes-emotion-music-player
 ```
 
 Install dependencies:
@@ -96,7 +96,7 @@ http://localhost:3000
 ## 📂 Project Structure
 
 ```
-moodify/
+MindTunes/
 │
 ├── Backend/
 │   │
@@ -191,7 +191,7 @@ Contributions are welcome!
 This project is licensed under the **MIT License**.
 
 ---
-Live Link - https://moodify-ai-music-player.vercel.app/
+Live Link - https://MindTunes-ai-music-player.vercel.app/
 ---
 
 ## 👨‍💻 Author

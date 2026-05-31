@@ -7,7 +7,7 @@ const songRoutes = require("./routes/songs.routes")
 const app = express();
 
 app.use(cors({
-  origin: "https://moodify-ai-music-player.vercel.app",
+  origin: "https://MindTunes-ai-music-player.vercel.app",
   credentials: true
 }));
 

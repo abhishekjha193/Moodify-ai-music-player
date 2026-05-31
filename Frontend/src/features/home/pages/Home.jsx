@@ -21,8 +21,8 @@ const Home = () => {
     <div className="home">
       <div className="home__header">
         <div className="home__logo">
-          <img src="/moodify - logo.png" alt="logo" />
-          <span>Moodify</span>
+          <img src="/MindTunes - logo.png" alt="logo" />
+          <span>MindTunes</span>
         </div>
 
         <div className="home__user">
