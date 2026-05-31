@@ -23,10 +23,10 @@ export const AuthProvider = ({ children }) => {
     fetchUser();
   }, []);
 
- const logout = async () => {
-  await logoutAPI();  
-  setUser(null);
-};
+  const logout = async () => {
+    await logoutAPI();
+    setUser(null);
+  };
 
   return (
     <AuthContext.Provider
@@ -35,10 +35,11 @@ export const AuthProvider = ({ children }) => {
         setUser,
         loading,
         setLoading,
-        logout, 
+        logout,
       }}
     >
       {children}
     </AuthContext.Provider>
   );
 };
+

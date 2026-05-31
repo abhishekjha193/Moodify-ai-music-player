@@ -43,9 +43,9 @@ async function registeruser(req, res) {
   });
 
   res.cookie("token", token, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
+    httpOnly: true, 
+    secure: true,  
+    sameSite: "none", 
   });
 
   return res.status(201).json({
@@ -124,3 +124,5 @@ async function logoutuser(req, res) {
 }
 
 module.exports = { registeruser, loginuser, getme, logoutuser };
+
+

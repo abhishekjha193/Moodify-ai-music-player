@@ -40,7 +40,6 @@ export default function FaceExpression({ onClick = () => {} }) {
     };
   }, []);
 
-  // 🔥 SAFE DETECT
   async function handleClick() {
     if (!ready) {
       alert("Camera not ready");
